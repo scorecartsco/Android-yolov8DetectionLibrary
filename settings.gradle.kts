@@ -10,9 +10,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
     }
+
 }
 
 rootProject.name = "YOLOv8 TfLite"
 include(":app")
-//include(":yolov8detectionlibrary")
+include(":yolov8detectionlibrary")
