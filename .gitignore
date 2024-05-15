@@ -7,4 +7,6 @@
 /captures
 .externalNativeBuild
 .cxx
+.tflite
+.txt
 local.properties
