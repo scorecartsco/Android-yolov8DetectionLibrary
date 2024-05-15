@@ -8,5 +8,6 @@
 .externalNativeBuild
 .cxx
 .tflite
+/assets
 .txt
 local.properties
