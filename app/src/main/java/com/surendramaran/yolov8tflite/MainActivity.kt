@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         detector = Detector(baseContext, MODEL_PATH, LABELS_PATH, this)
         detector.setup()
 
@@ -73,6 +74,8 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
             .setTargetAspectRatio(AspectRatio.RATIO_4_3)
             .setTargetRotation(rotation)
             .build()
+
+
 
         imageAnalyzer = ImageAnalysis.Builder()
             .setTargetAspectRatio(AspectRatio.RATIO_4_3)
@@ -148,6 +151,7 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
         if (allPermissionsGranted()){
             startCamera()
         } else {
+
             requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
         }
     }

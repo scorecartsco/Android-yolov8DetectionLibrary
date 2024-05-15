@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="YoloV8LiveDetectionView"/>
+    <declare-styleable name="YoloV8DetectionImageView">
+        <attr name="setImageDrawable" format="reference"/>
+    </declare-styleable>
+</resources>

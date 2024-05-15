@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">YOLOv8 TfLite</string>
+    <string name="run_detection">Run Detection</string>
 </resources>
