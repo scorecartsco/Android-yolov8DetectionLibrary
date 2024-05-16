@@ -307,7 +307,6 @@ class YoloV8Detection private constructor(
         private var coroutineScope: CoroutineScope? = null
 
 
-
         /**
          * Builds and returns an instance of [YoloV8Detection] using the provided context, model path, and label path.
          *
