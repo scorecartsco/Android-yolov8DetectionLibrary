@@ -15,7 +15,7 @@ class LiveCameraViewTestingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_live_camera_view_testing)
         liveView = findViewById(R.id.liveView)
 
-        liveView.startDetection(this,"yolov8m_float32.tflite","yolov8_obj_det.txt")
+        liveView.startDetection(this, Constants.MODEL_PATH, Constants.CLASSES_PATH,)
 
 
     }

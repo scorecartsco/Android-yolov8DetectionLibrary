@@ -41,11 +41,10 @@ class DetectionImageViewTestActivity : AppCompatActivity() {
          yoloV8DetectionImageView
              .startDetection(
                  this,
-                 "yolov8n_float32.tflite",
-                 "yolov8_obj_det.txt",
+                 Constants.MODEL_PATH,
+                 Constants.CLASSES_PATH,
                  results
              )
-
 
         }
     }

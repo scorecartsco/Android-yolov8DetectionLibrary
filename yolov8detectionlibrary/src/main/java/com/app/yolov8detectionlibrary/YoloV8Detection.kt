@@ -64,9 +64,7 @@ class YoloV8Detection private constructor(
         val outputShape = interpreter?.getOutputTensor(0)?.shape() ?: return
 
         tensorWidth = inputShape[1]
-        Log.i("jklsdfklsd","tensionWith: $tensorWidth")
         tensorHeight = inputShape[2]
-        Log.i("jklsdfklsd","tensionHeight: $tensorHeight")
         numChannel = outputShape[1]
         numElements = outputShape[2]
 
