@@ -6,9 +6,18 @@ import android.graphics.BitmapFactory
 import java.io.IOException
 import java.io.InputStream
 
+/**
+ * Utility object for common image-related functions.
+ */
 object LibUtils {
 
-    // Function to load an image from assets and convert it into a Bitmap
+    /**
+     * Loads an image from the assets directory and converts it into a Bitmap.
+     *
+     * @param context The context used to access the application's assets.
+     * @param fileName The name of the image file in the assets directory.
+     * @return The Bitmap representation of the loaded image, or null if an error occurs.
+     */
      fun loadImageFromAssets(context: Context, fileName: String): Bitmap? {
         return try {
             // Get the AssetManager

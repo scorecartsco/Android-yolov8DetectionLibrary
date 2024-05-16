@@ -28,6 +28,13 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
+/**
+ * YoloV8LiveDetectionView is a custom view for live camera feed with YOLOv8 object detection overlay.
+ * It provides methods to start object detection on the live camera feed and clear the detection results.
+ *
+ * @property context The context in which the view is created.
+ * @property atrSet The attribute set for the view.
+ */
 class YoloV8LiveDetectionView(context: Context, val atrSet: AttributeSet): ConstraintLayout(context,atrSet){
     private lateinit var attributes: TypedArray
     private lateinit var previewView: PreviewView
@@ -41,9 +48,16 @@ class YoloV8LiveDetectionView(context: Context, val atrSet: AttributeSet): Const
     private lateinit var detector: YoloV8Detection
     private lateinit var cameraExecutor: ExecutorService
 
+    /**
+     * Initializes the view and its child views.
+     */
     init {
         initViews()
     }
+
+    /**
+     * Initializes the child views of YoloV8LiveDetectionView.
+     */
     private fun initViews(){
         attributes = context.obtainStyledAttributes(atrSet,R.styleable.YoloV8LiveDetectionView)
         val layout = LayoutInflater.from(context).inflate(R.layout.live_camera_view,this)
@@ -52,6 +66,13 @@ class YoloV8LiveDetectionView(context: Context, val atrSet: AttributeSet): Const
 
     }
 
+    /**
+     * Starts object detection on the live camera feed.
+     *
+     * @param activityContext The context of the calling activity.
+     * @param modelPathFromAsset The path to the YOLOv8 model file in the assets directory.
+     * @param modelLabelPathFromAsset The path to the label file in the assets directory.
+     */
     fun startDetection(activityContext:AppCompatActivity, modelPathFromAsset: String, modelLabelPathFromAsset: String){
         activityContext.registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()) {
@@ -169,7 +190,9 @@ class YoloV8LiveDetectionView(context: Context, val atrSet: AttributeSet): Const
             Log.e(TAG, "Use case binding failed", exc)
         }
     }
-
+    /**
+     * Clears the detection results and releases resources associated with the camera.
+     */
     fun clearDetection(){
         detector.clear()
         cameraExecutor.shutdown()

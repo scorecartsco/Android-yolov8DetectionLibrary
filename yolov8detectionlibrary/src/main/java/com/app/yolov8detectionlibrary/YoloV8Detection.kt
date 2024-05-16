@@ -22,12 +22,42 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
-
+/**
+ * Represents different states of object detection.
+ */
 sealed class DetectionResult{
+
+
+    /**
+     * Initial state of object detection.
+     */
     data object Init:DetectionResult()
+
+
+    /**
+     * Represents the result of object detection.
+     *
+     * @property boundingBoxes List of detected bounding boxes.
+     * @property inferenceTime The time taken for inference.
+     */
     data class OnDetection(val boundingBoxes: List<BoundingBox>, val inferenceTime: Long):DetectionResult()
+
+
+    /**
+     * Represents an empty detection result.
+     */
     data object OnDetectionEmpty : DetectionResult()
 }
+
+/**
+ * YoloV8Detection is a class responsible for performing object detection using the YOLOv8 model.
+ * It loads the YOLOv8 model from the provided path and performs object detection on input frames.
+ * The class provides methods to clear detection results and perform object detection on bitmap frames.
+ *
+ * @property context The context of the calling activity.
+ * @property modelPath The path to the YOLOv8 model file in the assets directory.
+ * @property labelPath The path to the label file in the assets directory.
+ */
 
 class YoloV8Detection private constructor(
     private val context: AppCompatActivity,
@@ -51,9 +81,18 @@ class YoloV8Detection private constructor(
         .add(CastOp(INPUT_IMAGE_TYPE))
         .build()
 
+
+    /**
+     * Initializes the YoloV8Detection instance by setting up the YOLOv8 model and label file.
+     */
     init {
       setup()
     }
+
+
+    /**
+     * Sets up the YOLOv8 model and label file by loading them from the provided paths.
+     */
     private fun setup(){
         val model = FileUtil.loadMappedFile(context, modelPath)
         val options = Interpreter.Options()
@@ -85,11 +124,22 @@ class YoloV8Detection private constructor(
         }
     }
 
+
+    /**
+     * Clears the detection results and releases resources associated with the YOLOv8 model.
+     */
     fun clear() {
         interpreter?.close()
         interpreter = null
     }
 
+
+
+    /**
+     * Performs object detection on the provided bitmap frame.
+     *
+     * @param frame The bitmap frame for object detection.
+     */
     fun detect(frame: Bitmap) {
         interpreter ?: return
         if (tensorWidth == 0) return
@@ -128,6 +178,14 @@ class YoloV8Detection private constructor(
 
     }
 
+
+
+    /**
+     * Computes the bounding boxes with the highest confidence level among the detected objects.
+     *
+     * @param array The output array from the YOLOv8 model.
+     * @return A list of bounding boxes with the highest confidence level.
+     */
     private fun bestBox(array: FloatArray) : List<BoundingBox>? {
 
         val boundingBoxes = mutableListOf<BoundingBox>()
@@ -176,6 +234,14 @@ class YoloV8Detection private constructor(
         return applyNMS(boundingBoxes)
     }
 
+
+
+    /**
+     * Applies Non-Maximum Suppression (NMS) to remove redundant bounding boxes.
+     *
+     * @param boxes The list of bounding boxes to apply NMS on.
+     * @return The list of selected bounding boxes after applying NMS.
+     */
     private fun applyNMS(boxes: List<BoundingBox>) : MutableList<BoundingBox> {
         val sortedBoxes = boxes.sortedByDescending { it.confidence }.toMutableList()
         val selectedBoxes = mutableListOf<BoundingBox>()
@@ -198,6 +264,15 @@ class YoloV8Detection private constructor(
         return selectedBoxes
     }
 
+
+
+    /**
+     * Calculates the Intersection over Union (IoU) between two bounding boxes.
+     *
+     * @param box1 The first bounding box.
+     * @param box2 The second bounding box.
+     * @return The IoU value between the two bounding boxes.
+     */
     private fun calculateIoU(box1: BoundingBox, box2: BoundingBox): Float {
         val x1 = maxOf(box1.x1, box2.x1)
         val y1 = maxOf(box1.y1, box2.y1)
@@ -218,8 +293,26 @@ class YoloV8Detection private constructor(
         private const val IOU_THRESHOLD = 0.5F
     }
 
+
+
+
+    /**
+     * Builder class for creating instances of [YoloV8Detection].
+     *
+     * @property context The context of the calling activity.
+     * @property modelPath The path to the YOLOv8 model file in the assets directory.
+     * @property labelPath The path to the label file in the assets directory.
+     */
     class Builder(private val context: AppCompatActivity, private val modelPath: String, private val labelPath: String) {
         private var coroutineScope: CoroutineScope? = null
+
+
+
+        /**
+         * Builds and returns an instance of [YoloV8Detection] using the provided context, model path, and label path.
+         *
+         * @return An instance of [YoloV8Detection].
+         */
         fun build() = YoloV8Detection(context, modelPath, labelPath)
     }
 }

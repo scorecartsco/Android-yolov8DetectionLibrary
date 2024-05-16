@@ -9,6 +9,12 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 
+
+/**
+ * Custom view for displaying bounding boxes and class labels over detected objects.
+ *
+ * @property results List of bounding boxes containing information about the detected objects.
+ */
 class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
     private var results = listOf<BoundingBox>()
@@ -22,6 +28,9 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         initPaints()
     }
 
+    /**
+     * Clears the paints and resets the view.
+     */
     fun clear() {
         textPaint.reset()
         textBackgroundPaint.reset()
@@ -30,6 +39,9 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         initPaints()
     }
 
+    /**
+     * Initializes the paint objects used for drawing.
+     */
     private fun initPaints() {
         textBackgroundPaint.color = Color.BLACK
         textBackgroundPaint.style = Paint.Style.FILL
@@ -44,6 +56,9 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         boxPaint.style = Paint.Style.STROKE
     }
 
+    /**
+     * Draws the bounding boxes and class labels over detected objects on the canvas.
+     */
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
 
@@ -71,6 +86,12 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         }
     }
 
+
+    /**
+     * Sets the list of bounding boxes to be displayed.
+     *
+     * @param boundingBoxes The list of bounding boxes to be displayed.
+     */
     fun setResults(boundingBoxes: List<BoundingBox>) {
         results = boundingBoxes
         invalidate()

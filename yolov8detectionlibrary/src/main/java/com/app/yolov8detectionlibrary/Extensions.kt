@@ -6,6 +6,11 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 
 
+/**
+ * Converts the ImageView's drawable to a Bitmap.
+ *
+ * @return The Bitmap representation of the ImageView's drawable, or null if the drawable is null.
+ */
 fun ImageView.asBitmap():Bitmap?{
         // Get the drawable from the ImageView
         val drawable: Drawable? = this.drawable
