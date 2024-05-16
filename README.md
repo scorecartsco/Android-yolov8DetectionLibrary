@@ -1,7 +1,7 @@
 
 ---
 
-# YOLOv8 Detection Library
+# YOLOv8 Detection Library for Android
 
 ## Overview
 
@@ -9,19 +9,25 @@ The YOLOv8 Detection Library is a collection of custom views and utility classes
 
 ## Features
 
-- Real-time object detection using YOLOv8 model
-- Custom views for displaying bounding boxes and class labels over detected objects
+- Real-time object detection using YOLOv8 model (loading from Assets)
+- Custom views for displaying bounding boxes and class labels over detected objects using live camera view and static image
 - Utility functions for loading images and processing detection results
 
 ## Installation
 
 To integrate the YOLOv8 Detection Library into your Android project, follow these steps:
 
-1. Add the following dependency to your `build.gradle` file:
+1. Add the following dependency to your `build.gradle` groovy file:
 
    ```groovy
-   implementation 'com.app:yolov8detectionlibrary:1.0.0'
+   implementation 'com.github.scorecartsco:Android-yolov8DetectionLibrary:latest-version'
    ```
+   OR for kotlin file : 
+
+ ```kotlin
+   implementation ("com.github.scorecartsco:Android-yolov8DetectionLibrary:${latest-version}")
+   ```
+   
 
 2. Sync your project with Gradle.
 
