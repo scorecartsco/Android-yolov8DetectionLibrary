@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.app.yolov8detectionlibrary.BoundingBox
 import com.app.yolov8detectionlibrary.DetectionResult
 import com.app.yolov8detectionlibrary.YoloV8DetectionImageView
 
@@ -33,7 +34,7 @@ class DetectionImageViewTestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detection_image_view_test)
         yoloV8DetectionImageView = findViewById(R.id.yolov8DetectionImageView)
         runDetectionButton = findViewById(R.id.detectionBtn)
-
+        BoundingBox()
         //yoloV8DetectionImageView.setImageFromResource(R.drawable.shampoo_image)
 
         runDetectionButton.setOnClickListener {
