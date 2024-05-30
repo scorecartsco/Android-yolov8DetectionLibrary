@@ -29,12 +29,11 @@
         <activity
             android:name=".LiveCameraViewTestingActivity"
             android:exported="true">
-
-
         </activity>
         <activity
             android:name=".TestingActivity"
-            android:exported="true"></activity>
+            android:exported="true"
+            />
 
     </application>
 

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.app.yolov8detectionlibrary.DetectionResult
@@ -21,14 +23,17 @@ class TestingActivity : AppCompatActivity() {
         image = findViewById(R.id.image)
         text = findViewById(R.id.txt)
 
-        val imageBitmap = LibUtils.loadImageFromAssets(this,"shampoo_img_2.jpeg")
+
+
+
+        val imageBitmap = LibUtils.loadBitmapFromAssets(this,"shampoo_img_2.jpeg")
         image.setImageBitmap(imageBitmap!!)
         val detection = YoloV8Detection.Builder(this,"shampoo_float32.tflite","shampoo_labels.txt").build()
-        detection.detect(imageBitmap!!)
+        detection.detect(imageBitmap)
         lifecycleScope.launch {
             detection.detectionResultFlow.collect{
-                when(it){
 
+                when(it){
                     is DetectionResult.OnDetection -> {
                         val boudingBoxes = it.boundingBoxes
                         Log.i("DetectionResults","ResultsLength: ${boudingBoxes.size} with time ${it.inferenceTime}")
@@ -48,6 +53,7 @@ class TestingActivity : AppCompatActivity() {
 
                     }
                 }
+
             }
         }
 

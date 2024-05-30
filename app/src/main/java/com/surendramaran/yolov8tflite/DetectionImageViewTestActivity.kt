@@ -34,7 +34,7 @@ class DetectionImageViewTestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detection_image_view_test)
         yoloV8DetectionImageView = findViewById(R.id.yolov8DetectionImageView)
         runDetectionButton = findViewById(R.id.detectionBtn)
-        //yoloV8DetectionImageView.setImageFromResource(R.drawable.shampoo_image)
+        yoloV8DetectionImageView.setImageFromAssets("auto_dishwash_test2.jpeg")
 
         runDetectionButton.setOnClickListener {
 

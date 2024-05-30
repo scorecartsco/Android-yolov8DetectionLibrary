@@ -134,7 +134,6 @@ class YoloV8Detection private constructor(
     }
 
 
-
     /**
      * Performs object detection on the provided bitmap frame.
      *
@@ -165,7 +164,7 @@ class YoloV8Detection private constructor(
 
         if (bestBoxes == null) {
 
-                context.lifecycleScope.launch {
+            context.lifecycleScope.launch {
                     detectionResult.emit(DetectionResult.OnDetectionEmpty)
                 }
 
@@ -177,7 +176,6 @@ class YoloV8Detection private constructor(
 
 
     }
-
 
 
     /**
@@ -235,7 +233,6 @@ class YoloV8Detection private constructor(
     }
 
 
-
     /**
      * Applies Non-Maximum Suppression (NMS) to remove redundant bounding boxes.
      *
@@ -265,7 +262,6 @@ class YoloV8Detection private constructor(
     }
 
 
-
     /**
      * Calculates the Intersection over Union (IoU) between two bounding boxes.
      *
@@ -289,11 +285,9 @@ class YoloV8Detection private constructor(
         private const val INPUT_STANDARD_DEVIATION = 255f
         private val INPUT_IMAGE_TYPE = DataType.FLOAT32
         private val OUTPUT_IMAGE_TYPE = DataType.FLOAT32
-        private const val CONFIDENCE_THRESHOLD = 0.3F
+        private const val CONFIDENCE_THRESHOLD = 0.25F
         private const val IOU_THRESHOLD = 0.5F
     }
-
-
 
 
     /**

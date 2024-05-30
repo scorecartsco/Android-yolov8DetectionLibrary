@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.lifecycleScope
@@ -73,7 +72,7 @@ class YoloV8DetectionImageView(private val context: Context, private val atrSet:
      * @param imagePathFromAsset The path to the image file in the assets directory.
      */
     fun setImageFromAssets(imagePathFromAsset:String){
-        imageView.setImageBitmap(LibUtils.loadImageFromAssets(context,imagePathFromAsset))
+        imageView.setImageBitmap(LibUtils.loadBitmapFromAssets(context,imagePathFromAsset))
     }
 
     /**

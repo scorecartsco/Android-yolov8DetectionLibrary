@@ -18,7 +18,7 @@ object LibUtils {
      * @param fileName The name of the image file in the assets directory.
      * @return The Bitmap representation of the loaded image, or null if an error occurs.
      */
-     fun loadImageFromAssets(context: Context, fileName: String): Bitmap? {
+     fun loadBitmapFromAssets(context: Context, fileName: String): Bitmap? {
         return try {
             // Get the AssetManager
             val assetManager = context.assets
