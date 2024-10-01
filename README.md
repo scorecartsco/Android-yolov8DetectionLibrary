@@ -85,6 +85,14 @@ To perform object detection on a static image using an image view, follow these 
    imageDetectionView.setImageFromAssets("image.jpg")
    ```
 
+
+## Android Device requirement
+
+- Android version 19(Kitkat) and later
+- RAM 2 GB and more
+- ARM Processor recommended or x86 processor can also be fine
+- GPU recommended (but not mandatory)
+
 ## Documentation
 
 For detailed documentation on each class and method, refer to the source code or generated documentation.
