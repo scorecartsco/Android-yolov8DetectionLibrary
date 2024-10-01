@@ -5,7 +5,7 @@
 
 ## Overview
 
-The YOLOv8 Detection Library is a collection of custom views and utility classes for integrating YOLOv8 object detection into Android applications. This library provides functionality to perform real-time object detection using the YOLOv8 model on live camera feed or static images.
+The [YOLOv8 Detection Library](https://jitpack.io/#scorecartsco/Android-yolov8DetectionLibrary) is a collection of custom views and utility classes for integrating YOLOv8 object detection into Android applications. This library provides functionality to perform real-time object detection using the YOLOv8 model on live camera feed or static images.
 
 ## Features
 
