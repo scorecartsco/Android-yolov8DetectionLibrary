@@ -1,6 +1,6 @@
 package com.surendramaran.yolov8tflite
 
 object  Constants {
-   const val MODEL_PATH = "auto_dish_wash_s_best_float16.tflite"
-   const val CLASSES_PATH = "auto_dishwash.txt"
+   const val MODEL_PATH = "diapers_m_manual_auto_new_best_v3_float32.tflite"
+   const val CLASSES_PATH = "diapers.txt"
 }

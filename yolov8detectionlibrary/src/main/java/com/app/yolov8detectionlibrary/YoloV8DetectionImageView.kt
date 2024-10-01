@@ -42,14 +42,14 @@ class YoloV8DetectionImageView(private val context: Context, private val atrSet:
             imageView.setImageResource(
                 attributes.getSourceResourceId(
                     R.styleable.YoloV8DetectionImageView_setImageDrawable,
-                    R.drawable.test2
+                    R.drawable.oil_replacement10
                 )
             )
         }else{
             imageView.setImageDrawable(
                 context.resources.getDrawable( attributes.getSourceResourceId(
                     R.styleable.YoloV8DetectionImageView_setImageDrawable,
-                    R.drawable.test2
+                    R.drawable.oil_replacement10
                 ))
             )
         }
@@ -83,11 +83,12 @@ class YoloV8DetectionImageView(private val context: Context, private val atrSet:
      * @param labelAssetsPath The path to the label file in the assets directory.
      * @param result Callback function to receive the detection result.
      */
+
     fun startDetection(context: AppCompatActivity, modelAssetsPath: String, labelAssetsPath: String , result: ((detectionResult:DetectionResult)->Unit)? = null){
         val imageBitmap = imageView.asBitmap() ?: throw IllegalArgumentException("Image not yet associated with ImageView")
 
         val detection = YoloV8Detection.Builder(context,modelAssetsPath,labelAssetsPath).build()
-            detection.detect(imageBitmap)
+            detection.detect(imageBitmap);
 
         context.lifecycleScope.launch {
             detection.detectionResultFlow.collect{

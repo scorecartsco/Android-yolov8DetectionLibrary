@@ -136,7 +136,6 @@ class YoloV8LiveDetectionView(context: Context, val atrSet: AttributeSet): Const
             .build()
 
 
-
         imageAnalyzer = ImageAnalysis.Builder()
             .setTargetAspectRatio(AspectRatio.RATIO_4_3)
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
@@ -166,6 +165,63 @@ class YoloV8LiveDetectionView(context: Context, val atrSet: AttributeSet): Const
                     )
                 }
             }
+
+            /*
+
+O sajni re
+
+Kaise kate din raat
+
+Kaise ho tujhse baat
+
+Teri yaad satave re
+
+O sajni re
+
+Kaise kate din raat
+
+Kaise mile tera saath
+
+Teri yaad…
+
+Teri yaad satave re
+
+Antra
+
+Kaise ghanere badra ghire
+
+Teri kami ki barish liye
+
+Sailaab jo mere seene me hai
+
+Koi bataye ye kaise thame
+
+Tere bina ab kaise jiye
+
+O sajni re
+
+Kaise kate din raat
+
+Kaise ho tujhse baat
+
+Teri yaad satave re
+
+O sajni re
+
+Kaise kate din raat
+
+Kaise ho tujhse baat
+
+Teri yaad…
+
+Teri yaad satave re
+
+O sajni re
+
+
+
+
+             */
 
             val rotatedBitmap = Bitmap.createBitmap(
                 bitmapBuffer, 0, 0, bitmapBuffer.width, bitmapBuffer.height,

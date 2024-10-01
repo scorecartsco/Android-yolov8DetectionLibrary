@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 
@@ -61,12 +62,22 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
      */
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
-
+        var className = ""
+        if(results.isNotEmpty()){
+        className = results[0].className
+        }
         results.forEach {
+            Log.i("jklsdfkjls","${it.className}")
+            var currentClassName = it.className
             val left = it.x1 * width
             val top = it.y1 * height
             val right = it.x2 * width
             val bottom = it.y2 * height
+            if(currentClassName != className){
+                boxPaint.color = getRandomColor()
+            }
+
+            //boxPaint.color = ContextCompat.getColor(context!!, R.color.black)
 
             canvas.drawRect(left, top, right, bottom, boxPaint)
             val drawableText = it.className
@@ -82,8 +93,23 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                 textBackgroundPaint
             )
             canvas.drawText(drawableText, left, top + bounds.height(), textPaint)
-
+            className = it.className
         }
+    }
+
+    private fun getRandomColor(): Int {
+        val colors = arrayOf(
+            Color.RED,
+            Color.GREEN,
+            Color.BLUE,
+            Color.YELLOW,
+            Color.CYAN,
+            Color.MAGENTA,
+            Color.BLACK,
+            Color.GRAY,
+            Color.DKGRAY
+        )
+        return colors.random()
     }
 
 

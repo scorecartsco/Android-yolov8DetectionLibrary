@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.app.yolov8detectionlibrary.DetectionResult
@@ -22,8 +20,6 @@ class TestingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_testing)
         image = findViewById(R.id.image)
         text = findViewById(R.id.txt)
-
-
 
 
         val imageBitmap = LibUtils.loadBitmapFromAssets(this,"shampoo_img_2.jpeg")
@@ -44,7 +40,7 @@ class TestingActivity : AppCompatActivity() {
                         }
                         text.text = labels
                         labels = ""
-                    }
+                     }
                     DetectionResult.OnDetectionEmpty -> {
                         Log.i("DetectionResults","Empty Detection")
                     }
